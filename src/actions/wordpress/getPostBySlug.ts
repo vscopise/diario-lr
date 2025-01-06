@@ -1,10 +1,11 @@
 import { post } from "@/interfaces";
-
 export async function getPostBySlug(slug: string): Promise<post> {
-    const url = `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts/?slug=${slug}`;
+  const url = `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts/?slug=${slug}`;
 
-      const response = await fetch(url);
-      const post: post[] = await response.json();
-    
-      return post[0];
+  const response = await fetch(url, {
+    next: { revalidate: 60 },
+  });
+  const post: post[] = await response.json();
+
+  return post[0];
 }
