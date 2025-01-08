@@ -20,7 +20,10 @@ export default async function Home() {
           <div key={post.id} className="px-3 mb-2">
             <Link href={`/${post.slug}`}>
               <PostImage idImage={post.featured_media} />
-              <h2 className="font-bold text-sm">{post.title.rendered}</h2>
+              <h2
+                className="font-bold text-sm"
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              />
             </Link>
             <hr />
           </div>
