@@ -1,3 +1,6 @@
+export const revalidate = 604800;
+
+import { Metadata } from 'next';
 import { getPostBySlug } from "@/actions";
 import { PostImage, ScrollTop } from "@/components";
 import { post } from "@/interfaces";
@@ -8,6 +11,14 @@ interface Props {
   };
 }
 
+export async function generateMetadata({params}: Props):Promise<Metadata>{
+  const slug = params.slug;
+  const post = await getPostBySlug(slug);
+  return{
+    title:post?.title.rendered ?? 'Artículo no encontrado'
+  }
+}
+
 export default async function SiglePostPage({ params }: Props) {
   const { slug } = params;
 
@@ -15,8 +26,11 @@ export default async function SiglePostPage({ params }: Props) {
 
   return (
     <>
-      <PostImage idImage={post.featured_media} width={800} height={800} />
-      <h1 className="font-bold text-3xl mb-4">{post.title.rendered}</h1>
+      <PostImage idImage={post.featured_media} large />
+      <h1
+        className="font-bold text-3xl mb-4"
+        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+      />
       <div className="mb-6 pb-2 border-b-2 border-gray-400">
         <div
           dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}

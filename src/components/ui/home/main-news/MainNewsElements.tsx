@@ -1,21 +1,21 @@
 import { getZonePosts } from "@/actions";
-import { ZonePostItem } from "../ZonePostItem";
+import { PostCard } from "@/components";
 
 export const MainNewsElements = async () => {
   const posts = await getZonePosts("zona-cabezal");
 
   return (
-    <div className="lg:grid grid-cols-3 gap-3">
-      <div className="col-span-1">
+    <div className="flex flex-col-reverse lg:flex-row lg:space-x-3">
+      <div className="lg:w-1/3">
         <div>
-          <ZonePostItem postId={posts[1].ID} />
+          <PostCard postId={posts[1].ID} />
         </div>
         <div>
-          <ZonePostItem postId={posts[2].ID} />
+          <PostCard postId={posts[2].ID} />
         </div>
       </div>
-      <div className="col-span-2">
-        <ZonePostItem postId={posts[0].ID} />
+      <div className="lg:w-2/3">
+        <PostCard postId={posts[0].ID} large />
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export async function getZonePosts(slugZone: string) {
   const url2 = `${process.env.WORDPRESS_URL}/wp-json/zoninator/v1/zones/${zone.term_id}/posts`;
   //const response2 = await fetch(url2);
   const response2 = await fetch(url2, {
-    next: { revalidate: 60 },
+    next: { revalidate: 1 },
   });
   const posts = await response2.json();
 

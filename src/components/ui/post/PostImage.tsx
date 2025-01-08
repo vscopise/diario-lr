@@ -3,15 +3,17 @@ import Image from "next/image";
 
 interface Props {
   idImage: number;
-  width: number;
-  height: number;
+  large?: boolean;
 }
 
-export const PostImage = async ({ idImage, width, height }: Props) => {
+export const PostImage = async ({ idImage, large }: Props) => {
   const image = await getFeaturedMediaById(idImage);
 
+  const width = large ? 1000 : 500;
+  const height = large ? 1000 : 500;
+
   return (
-    <div className="mb-4">
+    <div className="mb-1">
       {image?.source_url ? (
         <Image
           src={image.source_url}

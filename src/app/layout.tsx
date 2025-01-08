@@ -19,7 +19,7 @@ export default function RootLayout({
         <TopMenu />
         <SideBar />
 
-        <main className="min-h-screen container mx-auto px-10 lg:w-[992px] shadow bg-gray-100">
+        <main className="min-h-screen container mx-auto px-5 lg:w-[1280px] shadow bg-gray-100">
           {children}
         </main>
       </body>
