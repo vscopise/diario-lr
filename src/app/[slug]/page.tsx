@@ -2,8 +2,9 @@ export const revalidate = 604800;
 
 import { Metadata } from 'next';
 import { getPostBySlug } from "@/actions";
-import { PostImage, ScrollTop } from "@/components";
+import { Loading, PostImage, PostMeta, ScrollTop } from "@/components";
 import { post } from "@/interfaces";
+import { Suspense } from 'react';
 
 interface Props {
   params: {
@@ -25,7 +26,7 @@ export default async function SiglePostPage({ params }: Props) {
   const post: post = await getPostBySlug(slug);
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <PostImage idImage={post.featured_media} large />
       <h1
         className="font-bold text-3xl mb-4"
@@ -37,11 +38,12 @@ export default async function SiglePostPage({ params }: Props) {
           className="text-2xl text-gray-800 max-w-fit "
         />
       </div>
+      <PostMeta post={post} />
       <div
         dangerouslySetInnerHTML={{ __html: post.content.rendered }}
         className="[&_p]:mb-4 [&_.wp-caption-text]:font-sans [&_.wp-caption-text]:mb-4 [&_.wp-caption-text]:text-sm text-xl text-gray-800 [&_figure]:!w-auto"
       />
       <ScrollTop />
-    </>
+    </Suspense>
   );
 }

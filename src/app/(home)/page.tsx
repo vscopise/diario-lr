@@ -1,5 +1,3 @@
-export const revalidate = 60;
-
 import { post } from "@/interfaces";
 
 import { MainNews, PostImage } from "@/components";
@@ -7,9 +5,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const url = `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts`;
-  const req = await fetch(url, {
-    next: { revalidate: 60 },
-  });
+  const req = await fetch(url);
   const posts: post[] = await req.json();
 
   return (
