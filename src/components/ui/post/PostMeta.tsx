@@ -1,3 +1,4 @@
+//import { getAuthorById } from "@/actions";
 import { post } from "@/interfaces";
 
 interface Props {
@@ -15,7 +16,7 @@ const elapsed = (postDate: string) => {
   } else if (timeDiff < 60 * 60 * 1000) {
     return `hace ${(timeDiff / (60 * 1000)).toFixed()} minutos`;
   } else if (timeDiff < 24 * 60 * 60 * 1000) {
-    return `hace ${(timeDiff / (60 * 60 * 1000)).toFixed()} horas`;
+    return `hace ${(timeDiff / (60 * 60 * 1000)).toFixed()} hora(s)`;
   } else {
     return `el ${new Date(postDate).toLocaleDateString("es-ES", {
       month: "long",
@@ -25,10 +26,11 @@ const elapsed = (postDate: string) => {
   }
 };
 
-export const PostMeta = ({ post }: Props) => {
+export const PostMeta = async ({ post }: Props) => {
+  //const author = await getAuthorById(post.author);
   return (
     <div className="text-gray-500 mb-2">
-      <p>Publicado {elapsed(post.date)}</p>
+      <p>- Publicado {elapsed(post.date)}</p>
     </div>
   );
 };

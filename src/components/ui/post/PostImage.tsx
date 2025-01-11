@@ -13,7 +13,7 @@ export const PostImage = async ({ idImage, large }: Props) => {
   const height = large ? 1000 : 500;
 
   return (
-    <div className="mb-1">
+    <>
       {image?.source_url ? (
         <Image
           src={image.source_url}
@@ -26,6 +26,6 @@ export const PostImage = async ({ idImage, large }: Props) => {
           No image available
         </div>
       )}
-    </div>
+    </>
   );
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { baseFont } from "@/config/fonts";
 import { SideBar, TopMenu } from "@/components";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Diario La R",
@@ -16,6 +17,22 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={baseFont.className}>
+        <Script
+          async
+          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+        />
+        <Script
+          id="ad-manager"
+          dangerouslySetInnerHTML={{
+            __html: `window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/100242293/0banner-en-home-300x250-2', [[300, 250], [300, 300]], 'div-gpt-ad-1736603455093-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });`,
+          }}
+        />
+
         <TopMenu />
         <SideBar />
 

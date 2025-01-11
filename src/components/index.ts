@@ -6,3 +6,4 @@ export * from './ui/post/PostMeta';
 export * from './ui/home/main-news/MainNews';
 export * from './ui/scroll-top/ScrollTop';
 export * from './ui/loading/Loading';
+export * from './banners/BannerEnHome300x250-1';

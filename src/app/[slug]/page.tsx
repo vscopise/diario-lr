@@ -27,21 +27,23 @@ export default async function SiglePostPage({ params }: Props) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <PostImage idImage={post.featured_media} large />
       <h1
-        className="font-bold text-3xl mb-4"
+        className="text-4xl mb-4"
         dangerouslySetInnerHTML={{ __html: post.title.rendered }}
       />
-      <div className="mb-6 pb-2 border-b-2 border-gray-400">
+      <div className="mb-6 pb-2">
         <div
           dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-          className="text-2xl text-gray-800 max-w-fit "
+          className="text-xl text-gray-500 max-w-fit "
         />
       </div>
       <PostMeta post={post} />
+      <div className='px-16 mb-5'>
+        <PostImage idImage={post.featured_media} large />
+      </div>
       <div
         dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-        className="[&_p]:mb-4 [&_.wp-caption-text]:font-sans [&_.wp-caption-text]:mb-4 [&_.wp-caption-text]:text-sm text-xl text-gray-800 [&_figure]:!w-auto"
+        className="px-32 [&_p]:mb-8 [&_.wp-caption-text]:font-sans [&_.wp-caption-text]:mb-4 [&_.wp-caption-text]:text-sm text-xl text-gray-700 [&_figure]:!w-auto"
       />
       <ScrollTop />
     </Suspense>
