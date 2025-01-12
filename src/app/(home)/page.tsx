@@ -28,11 +28,3 @@ export default async function Home() {
     </>
   );
 }
-
-export function Loading() {
-  return (
-    <div className="animate-pulse py-16">
-      <div className="h-16 rounded bg-gray-300" />
-    </div>
-  );
-}
