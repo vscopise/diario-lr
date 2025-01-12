@@ -1,4 +1,4 @@
-import { BannerEnHome300x250_1 } from "@/components/";
+import { SideBanner } from "@/components/ad/SideBanner";
 import { MainNewsElements } from "./MainNewsElements";
 
 export const MainNews = () => {
@@ -9,7 +9,7 @@ export const MainNews = () => {
       </div>
       <div className="lg:w-[332px] lg:pl-8 flex-none">
         <p>Sidebar</p>
-        <BannerEnHome300x250_1 />
+        <SideBanner />
       </div>
     </section>
   );
