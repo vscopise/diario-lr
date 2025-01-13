@@ -35,7 +35,7 @@ export default function RootLayout({
             googletag.defineSlot('100242293/0banner-en-home-300x250-2', [[300, 300], [300, 250]], 'div-gpt-ad-1736742873965-0').addService(googletag.pubads());
               googletag.pubads().enableSingleRequest();
               googletag.enableServices();
-              googletag.display('div-gpt-ad-1736742873965-0');
+              
           });
         `}</Script>
       </body>
