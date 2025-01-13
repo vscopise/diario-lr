@@ -1,27 +1,24 @@
-'use client'
+"use client";
 
-import { useEffect } from "react"
-
+import Script from "next/script";
 
 export const SideBanner = () => {
-  
-  //const [loading, setLoading] = useState(true)
-  
-  useEffect(() => {
-    setTimeout(() => {
-      const { googletag } = window
-  
-      googletag.cmd.push(() => {
-        googletag.display('div-gpt-ad-1736688216002-0')
-      })
-  
-      //setLoading(false)
-    }, 3000)
-  }, [])
-
   return (
-    <div id="div-gpt-ad-1736688216002-0">
+    <div
+      id="div-gpt-ad-1736742873965-0"
+      className="min-w-[300px] min-h-[250px]"
+    >
+      <Script
+        id="0bannerEnHome300x2502"
         
+        dangerouslySetInnerHTML={{
+          __html: `
+            googletag.cmd.push(function() { 
+              googletag.display('div-gpt-ad-1736742873965-0'); 
+            });
+          `,
+        }}
+      />
     </div>
-  )
-}
+  );
+};

@@ -4,15 +4,17 @@ import Script from "next/script";
 export const GptHead: React.FC = () => {
   return (
     <>
-      <Script
-        async
+      {/* <Script
+        //strategy="beforeInteractive"
+        id="script-component-ad"
         src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-        strategy="afterInteractive"
-      />
+      /> */}
       <Script
         id="gpt-head"
-        dangerouslySetInnerHTML={{
-          __html: `
+        //strategy="beforeInteractive"
+        
+      >{
+        `
             window.googletag = window.googletag || { cmd: [] };
             googletag.cmd.push(function() {
               googletag.defineSlot(
@@ -22,9 +24,8 @@ export const GptHead: React.FC = () => {
               googletag.pubads().enableSingleRequest();
               googletag.enableServices();
             });
-          `,
-        }}
-      />
+          `
+      }</Script>
     </>
   );
 };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { baseFont } from "@/config/fonts";
 import { SideBar, TopMenu } from "@/components";
-import { GptHead } from "@/components/ad/gpt";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Diario La R",
@@ -17,14 +17,27 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={baseFont.className}>
-        <GptHead />
-
         <TopMenu />
         <SideBar />
 
         <main className="min-h-screen container mx-auto px-5 lg:w-[1280px] shadow bg-gray-100">
           {children}
         </main>
+        <Script
+          async
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+        />
+        <Script strategy="beforeInteractive" id="gpt-head">{`
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function() {
+            googletag.defineSlot('100242293/0banner-en-home-300x250-2', [[300, 300], [300, 250]], 'div-gpt-ad-1736742873965-0').addService(googletag.pubads());
+              googletag.pubads().enableSingleRequest();
+              googletag.enableServices();
+              googletag.display('div-gpt-ad-1736742873965-0');
+          });
+        `}</Script>
       </body>
     </html>
   );

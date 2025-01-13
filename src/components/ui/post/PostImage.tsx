@@ -20,6 +20,7 @@ export const PostImage = async ({ idImage, large }: Props) => {
           width={width}
           height={height}
           alt={image.alt_text}
+          priority
         />
       ) : (
         <div className="flex items-center justify-center w-full h-full text-muted-foreground">
